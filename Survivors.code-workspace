@@ -1,0 +1,613 @@
+{
+	"folders": [
+		{
+			"name": "Survivors",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "D:\\UE_5.3"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Survivors Win64 Debug Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Survivors Win64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Debug Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 DebugGame Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Survivors Win64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Development Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Development Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Survivors Win64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Development Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Test Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Test",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Test Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Test",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Survivors Win64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Test Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Test",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Shipping Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Shipping",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Shipping",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"Survivors Win64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "Survivors Win64 Shipping Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Survivors",
+					"Win64",
+					"Shipping",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Debug Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"SurvivorsEditor Win64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Debug Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Debug",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 DebugGame Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"SurvivorsEditor Win64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"DebugGame",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Development Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Development Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"SurvivorsEditor Win64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			},
+			{
+				"label": "SurvivorsEditor Win64 Development Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"SurvivorsEditor",
+					"Win64",
+					"Development",
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "D:\\UE_5.3"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch Survivors (Debug)",
+				"request": "launch",
+				"program": "D:\\UnrealEngine5\\Survivors\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+				"preLaunchTask": "Survivors Win64 Debug Build",
+				"args": [
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch Survivors (DebugGame)",
+				"request": "launch",
+				"program": "D:\\UnrealEngine5\\Survivors\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+				"preLaunchTask": "Survivors Win64 DebugGame Build",
+				"args": [
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch Survivors (Development)",
+				"request": "launch",
+				"program": "D:\\UnrealEngine5\\Survivors\\Binaries\\Win64\\UnrealGame.exe",
+				"preLaunchTask": "Survivors Win64 Development Build",
+				"args": [
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch Survivors (Test)",
+				"request": "launch",
+				"program": "D:\\UnrealEngine5\\Survivors\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+				"preLaunchTask": "Survivors Win64 Test Build",
+				"args": [
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch Survivors (Shipping)",
+				"request": "launch",
+				"program": "D:\\UnrealEngine5\\Survivors\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+				"preLaunchTask": "Survivors Win64 Shipping Build",
+				"args": [
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch SurvivorsEditor (Debug)",
+				"request": "launch",
+				"program": "D:\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
+				"preLaunchTask": "SurvivorsEditor Win64 Debug Build",
+				"args": [
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject"
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch SurvivorsEditor (DebugGame)",
+				"request": "launch",
+				"program": "D:\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
+				"preLaunchTask": "SurvivorsEditor Win64 DebugGame Build",
+				"args": [
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject"
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch SurvivorsEditor (Development)",
+				"request": "launch",
+				"program": "D:\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+				"preLaunchTask": "SurvivorsEditor Win64 Development Build",
+				"args": [
+					"D:\\UnrealEngine5\\Survivors\\Survivors.uproject"
+				],
+				"cwd": "D:\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "D:\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "D:\\UE_5.3"
+				}
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Win64 Development Build",
+				"program": "D:\\UE_5.3\\Engine\\Build\\BatchFiles\\RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=D:\\UnrealEngine5\\Survivors\\Survivors.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "externalTerminal",
+				"stopAtEntry": false,
+				"cwd": "D:\\UE_5.3"
+			}
+		]
+	}
+}
