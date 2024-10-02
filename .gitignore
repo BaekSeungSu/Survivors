@@ -72,3 +72,12 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+#  My Ignore
+Content/InfinityBladeAdversaries
+Content/InfinityBladeGrassLands
+Content/InfinityBladeWarriors
+Content/InfinityBladeWeapons
+Content/ParagonGreystone
+Content/ParagonRampage
+Content/StarterContent
