@@ -27,6 +27,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+	float MoveForwardValue;
+	float MoveRightValue;
+
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
+	void Turn(float deltatime);
 };

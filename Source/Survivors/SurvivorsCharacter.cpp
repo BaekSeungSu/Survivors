@@ -2,6 +2,8 @@
 
 
 #include "SurvivorsCharacter.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ASurvivorsCharacter::ASurvivorsCharacter()
@@ -9,6 +11,8 @@ ASurvivorsCharacter::ASurvivorsCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+    GetCharacterMovement()->bOrientRotationToMovement = true;
+    bUseControllerRotationYaw = false;
 }
 
 // Called when the game starts or when spawned
@@ -22,7 +26,7 @@ void ASurvivorsCharacter::BeginPlay()
 void ASurvivorsCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+    Turn(DeltaTime);
 }
 
 // Called to bind functionality to input
@@ -37,11 +41,30 @@ void ASurvivorsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 void ASurvivorsCharacter::MoveForward(float AxisValue)
 {
-	AddMovementInput(GetActorForwardVector() * AxisValue);
+	MoveForwardValue = AxisValue;
 }
 
 void ASurvivorsCharacter::MoveRight(float AxisValue)
 {
-	AddMovementInput(GetActorRightVector() * AxisValue);
+	MoveRightValue = AxisValue;
 }
+
+void ASurvivorsCharacter::Turn(float deltatime)
+{
+    FVector InputDirection = FVector(MoveForwardValue, MoveRightValue, 0.0f);
+
+    if(!InputDirection.IsNearlyZero())
+    {
+        FRotator TargetRotation = InputDirection.Rotation();
+        TargetRotation.Pitch = 0.0f;
+        TargetRotation.Roll = 0.0f;
+
+        FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, deltatime, 10.0f);
+        SetActorRotation(NewRotation);
+
+        AddMovementInput(InputDirection.GetSafeNormal());
+    }
+
+}
+
 
