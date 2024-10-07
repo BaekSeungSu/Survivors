@@ -22,11 +22,17 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	class AWeaponBase* CurrentWeapon;
+
 private:
 	float MoveForwardValue;
 	float MoveRightValue;
+	
+	FTimerHandle AttackTimerHandle;
 
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void Turn(float deltatime);
+	void Attack();
 };
