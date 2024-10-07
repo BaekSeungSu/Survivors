@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Enemy.generated.h"
 
+
 UCLASS()
 class SURVIVORS_API AEnemy : public ACharacter
 {
@@ -21,5 +22,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+private:
 
 };

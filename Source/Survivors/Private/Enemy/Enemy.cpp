@@ -2,7 +2,7 @@
 
 
 #include "Enemy/Enemy.h"
-
+#include "Components/AttributeComponent.h"
 
 AEnemy::AEnemy()
 {
