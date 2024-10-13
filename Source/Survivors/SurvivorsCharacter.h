@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Weapons/WeaponBase.h"
 #include "SurvivorsCharacter.generated.h"
+
 
 UCLASS()
 class SURVIVORS_API ASurvivorsCharacter : public ACharacter
@@ -14,25 +16,24 @@ class SURVIVORS_API ASurvivorsCharacter : public ACharacter
 public:
 	ASurvivorsCharacter();
 
-protected:
-	virtual void BeginPlay() override;
-
-public:	
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
-	class AWeaponBase* CurrentWeapon;
+	void Attack();
+
+protected:
+	virtual void BeginPlay() override;
 
 private:
 	float MoveForwardValue;
 	float MoveRightValue;
 	
-	FTimerHandle AttackTimerHandle;
-
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void Turn(float deltatime);
-	void Attack();
+
+	UPROPERTY()
+	AWeaponBase* EquippedWeapon;
+
 };

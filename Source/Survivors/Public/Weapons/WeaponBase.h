@@ -14,12 +14,13 @@ class SURVIVORS_API AWeaponBase : public AActor
 public:	
 	AWeaponBase();
 
-	// 모든 무기는 기본적으로 공격력을 가짐
+	// 모든 무기는 공격력을 가짐
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Stats")
 	float AttackPower;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class UParticleSystem* AttackEffect;
+	// 모든 무기는 쿨다운을 가짐
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Stats")
+	float Cooldown;
 
 	// 모든 무기는 공격 행위를 함
 	virtual void Attack();
@@ -27,5 +28,10 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class USceneComponent* WeaponRoot;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class UParticleSystemComponent* AttackEffect;
 
 };

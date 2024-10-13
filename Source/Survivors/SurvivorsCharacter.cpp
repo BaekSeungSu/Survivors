@@ -4,7 +4,6 @@
 #include "SurvivorsCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Weapons/WeaponBase.h"
 
 ASurvivorsCharacter::ASurvivorsCharacter()
 {
@@ -17,7 +16,6 @@ ASurvivorsCharacter::ASurvivorsCharacter()
 void ASurvivorsCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-    GetWorld()->GetTimerManager().SetTimer(AttackTimerHandle, this, &ASurvivorsCharacter::Attack, 1.0f, true);
 	
 }
 
@@ -34,6 +32,14 @@ void ASurvivorsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ASurvivorsCharacter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ASurvivorsCharacter::MoveRight);
 
+}
+
+void ASurvivorsCharacter::Attack()
+{
+    if(EquippedWeapon)
+    {
+        EquippedWeapon->Attack();
+    }
 }
 
 void ASurvivorsCharacter::MoveForward(float AxisValue)
@@ -63,13 +69,3 @@ void ASurvivorsCharacter::Turn(float deltatime)
     }
 
 }
-
-void ASurvivorsCharacter::Attack()
-{
-    if(CurrentWeapon)
-    {
-        CurrentWeapon->Attack();
-    }
-}
-
-
