@@ -4,6 +4,7 @@
 #include "SurvivorsCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/PlayerController.h"
 
 ASurvivorsCharacter::ASurvivorsCharacter()
 {
@@ -16,6 +17,8 @@ ASurvivorsCharacter::ASurvivorsCharacter()
 void ASurvivorsCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+    EquipWeapons();
 	
 }
 
@@ -23,6 +26,7 @@ void ASurvivorsCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
     Turn(DeltaTime);
+    Attack();
 }
 
 void ASurvivorsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -68,4 +72,22 @@ void ASurvivorsCharacter::Turn(float deltatime)
         AddMovementInput(InputDirection.GetSafeNormal());
     }
 
+}
+
+void ASurvivorsCharacter::EquipWeapons()
+{
+    if(WeaponBaseClass)
+    {
+        FActorSpawnParameters Spanwparams;
+        Spanwparams.Owner = this;
+        Spanwparams.Instigator = GetInstigator();
+
+        EquippedWeapon = GetWorld()->SpawnActor<AWeaponBase>(WeaponBaseClass, Spanwparams);
+
+        if(EquippedWeapon)
+        {
+            EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("WeaponSocket"));
+        }
+
+    }
 }

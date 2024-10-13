@@ -20,6 +20,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void Attack() override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+    TSubclassOf<class ASwordProjectile> ProjectileClass;
 
 protected:
 	virtual void BeginPlay() override;
@@ -37,6 +39,7 @@ private:
 	FTimerHandle CooldownTimerHandle;
 	bool CanAttack;
 
+	FVector AttackDirection;
 	FVector StartLocation;
 	FVector EndLocation;
 

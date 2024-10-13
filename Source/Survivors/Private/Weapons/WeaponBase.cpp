@@ -13,9 +13,6 @@ AWeaponBase::AWeaponBase()
 	WeaponRoot = CreateDefaultSubobject<USceneComponent>(TEXT("Scene Component"));
 	RootComponent = WeaponRoot;
 
-	AttackEffect = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Weapon Effect"));
-	AttackEffect->SetupAttachment(WeaponRoot);
-
 	AttackPower = 10.0f;
 	Cooldown = 1.0f;
 }

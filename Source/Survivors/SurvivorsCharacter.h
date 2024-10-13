@@ -32,8 +32,12 @@ private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void Turn(float deltatime);
+	void EquipWeapons();
 
-	UPROPERTY()
-	AWeaponBase* EquippedWeapon;
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+    TSubclassOf<AWeaponBase> WeaponBaseClass;
+
+    UPROPERTY()
+    AWeaponBase* EquippedWeapon;
 
 };

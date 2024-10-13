@@ -4,8 +4,9 @@
 #include "Weapons/SwordWeapon.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
+#include "Weapons/SwordProjectile.h"
 #include "TimerManager.h"
-#include "Particles/ParticleSystemComponent.h"
+
 
 ASwordWeapon::ASwordWeapon()
 {
@@ -20,48 +21,33 @@ void ASwordWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 	
-
 }
 
 void ASwordWeapon::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-
-    if(AttackEffect->IsActive())
-    {
-        MoveEffect(DeltaTime);
-    }
 }
 
 void ASwordWeapon::Attack()
 {
-    if(CanAttack)
+    if(CanAttack && ProjectileClass)
     {
         CanAttack = false;
 
-        StartLocation = GetOwner()->GetActorLocation() + GetOwner()->GetActorForwardVector() * 100.f;
-        EndLocation = StartLocation + GetOwner()->GetActorForwardVector() * AttackRange;
+        StartLocation = GetOwner()->GetActorLocation() + GetOwner()->GetActorForwardVector() * 50.f;
+        AttackDirection = GetOwner()->GetActorForwardVector();
 
-        AttackEffect->SetWorldLocation(StartLocation);
-        AttackEffect->Activate();
+        FActorSpawnParameters SpawnParams;
+        SpawnParams.Owner = this;
+        SpawnParams.Instigator = GetInstigator();
+    
+        ASwordProjectile* Projectile = GetWorld()->SpawnActor<ASwordProjectile>(ProjectileClass, StartLocation, FRotator::ZeroRotator, SpawnParams);
+        if (Projectile)
+        {
+            Projectile->InitializeProjectile(AttackDirection, EffectSpeed, AttackRange);
+        }
 
         GetWorldTimerManager().SetTimer(CooldownTimerHandle, this, &ASwordWeapon::OnAttackCooldown, Cooldown, false);
-    }
-}
-
-void ASwordWeapon::MoveEffect(float DeltaTime)
-{
-    FVector CurrentLocation = AttackEffect->GetComponentLocation();
-    FVector Direction = (EndLocation - StartLocation).GetSafeNormal();
-    FVector NewLocation = CurrentLocation + Direction * EffectSpeed * DeltaTime;
-
-    if(FVector::Dist(NewLocation, StartLocation) >= AttackRange)
-    {
-        AttackEffect->Deactivate();
-    }
-    else
-    {
-        AttackEffect->SetWorldLocation(NewLocation);
     }
 }
 

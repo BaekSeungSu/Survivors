@@ -31,7 +31,6 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USceneComponent* WeaponRoot;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	class UParticleSystemComponent* AttackEffect;
 
+	
 };
