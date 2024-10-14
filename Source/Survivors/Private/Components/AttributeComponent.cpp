@@ -22,3 +22,12 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 }
 
+void UAttributeComponent::TakeDamage(float Damage)
+{
+	Health = FMath::Clamp(Health - Damage, 0.0f, MaxHealth);
+}
+
+bool UAttributeComponent::IsDead() const
+{
+	return Health <= 0.0f;
+}

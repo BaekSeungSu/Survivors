@@ -21,8 +21,11 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
-
 private:
+	UPROPERTY(VisibleAnywhere)
+	class UAttributeComponent* Attributes;
+
+	void TakeDamage(float Damage);
 
 };
+

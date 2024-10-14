@@ -16,6 +16,9 @@ public:
 	UAttributeComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	void TakeDamage(float Damage);
+	bool IsDead() const;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -30,3 +33,5 @@ private:
 	
 		
 };
+
+
