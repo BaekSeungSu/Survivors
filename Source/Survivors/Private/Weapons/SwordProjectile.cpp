@@ -1,33 +1,38 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Weapons/SwordProjectile.h"
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystem.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Components/SphereComponent.h"
 
-// Sets default values
 ASwordProjectile::ASwordProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("Collision Component"));
+	CollisionComponent->InitSphereRadius(15.f);
+	CollisionComponent->SetCollisionProfileName(TEXT("Projectile"));
+	RootComponent = CollisionComponent;
+
+	CollisionComponent->OnComponentHit.AddDynamic(this, &ASwordProjectile::OnHit);
+
+	SwordProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Sword Projectile Movement Component"));
+	SwordProjectileMovementComponent->MaxSpeed = 1000.f;
+	SwordProjectileMovementComponent->InitialSpeed = 1000.f;
 }
 
-// Called when the game starts or when spawned
 void ASwordProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-
 	SpanwParticle();
-	
+	StartLocation = GetActorLocation();
 }
 
-// Called every frame
 void ASwordProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	MoveParticle(DeltaTime);
+	DestroyProjectile();
 }
 
 void ASwordProjectile::SpanwParticle()
@@ -37,24 +42,29 @@ void ASwordProjectile::SpanwParticle()
 		UGameplayStatics::SpawnEmitterAttached(ProjectileEffect, RootComponent);
 	}
 
-	StartLocation = GetActorLocation();
 }
 
-void ASwordProjectile::MoveParticle(float DeltaTime)
+void ASwordProjectile::DestroyProjectile()
 {
-	FVector NewLocation = GetActorLocation() + (MoveDirection * ProjectileSpeed * DeltaTime);
-	SetActorLocation(NewLocation);
+	float DistanceTravelled = FVector::Dist(StartLocation, GetActorLocation());
 
-	if(FVector::Dist(StartLocation, NewLocation) >= MaxRange)
+	if(DistanceTravelled >= MaxRange)
 	{
 		Destroy();
 	}
-
 }
 
-void ASwordProjectile::InitializeProjectile(FVector Direction, float Speed, float Range)
+
+void ASwordProjectile::InitializeProjectile(FVector Direction, float Range, float Damage)
 {
 	MoveDirection = Direction.GetSafeNormal();
-	ProjectileSpeed = Speed;
 	MaxRange = Range;
+	ProjectileDamage = Damage;
+
+	SwordProjectileMovementComponent->Velocity = MoveDirection * SwordProjectileMovementComponent->InitialSpeed;
+}
+
+void ASwordProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	
 }

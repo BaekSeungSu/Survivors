@@ -16,7 +16,7 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
-	void InitializeProjectile(FVector Direction, float Speed, float Range);
+	void InitializeProjectile(FVector Direction, float Range, float Damage);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 	class UParticleSystem* ProjectileEffect;
@@ -25,15 +25,27 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	UPROPERTY(VisibleAnywhere, Category = "Projectile")
+	class UProjectileMovementComponent* SwordProjectileMovementComponent;
+
+	UPROPERTY(VisibleAnywhere, Category = "Projectile")
+	class USphereComponent* CollisionComponent;
+	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 	void SpanwParticle();
-	void MoveParticle(float DeltaTime);
+	void DestroyProjectile();
 
 	FVector MoveDirection;
 	FVector StartLocation;
 
-	float ProjectileSpeed;
 	float MaxRange;
+	float ProjectileDamage;
 
 };
+
+
+
 
 
