@@ -33,9 +33,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float AttackRange;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
-	float EffectSpeed;
-
 	FTimerHandle CooldownTimerHandle;
 	bool CanAttack;
 

@@ -10,10 +10,9 @@
 
 ASwordWeapon::ASwordWeapon()
 {
-    PrimaryActorTick.bCanEverTick = true;
+    PrimaryActorTick.bCanEverTick = false;
 
     AttackRange = 500.f;
-    EffectSpeed = 100.f;
     CanAttack = true;
 }
 
@@ -44,7 +43,7 @@ void ASwordWeapon::Attack()
         ASwordProjectile* Projectile = GetWorld()->SpawnActor<ASwordProjectile>(ProjectileClass, StartLocation, FRotator::ZeroRotator, SpawnParams);
         if (Projectile)
         {
-            Projectile->InitializeProjectile(AttackDirection, EffectSpeed, AttackRange);
+            Projectile->InitializeProjectile(AttackDirection, AttackRange, AttackPower);
         }
 
         GetWorldTimerManager().SetTimer(CooldownTimerHandle, this, &ASwordWeapon::OnAttackCooldown, Cooldown, false);
