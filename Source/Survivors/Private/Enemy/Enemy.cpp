@@ -35,14 +35,3 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
-void AEnemy::TakeDamage(float Damage)
-{
-	if(Attributes)
-	{
-		Attributes->TakeDamage(Damage);
-		if(Attributes->IsDead())
-		{
-			Destroy();
-		}
-	}	
-}

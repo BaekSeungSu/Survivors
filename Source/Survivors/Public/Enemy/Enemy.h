@@ -25,7 +25,5 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	class UAttributeComponent* Attributes;
 
-	void TakeDamage(float Damage);
-
 };
 
