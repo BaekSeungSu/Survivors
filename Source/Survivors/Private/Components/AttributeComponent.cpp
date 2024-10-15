@@ -2,18 +2,18 @@
 
 
 #include "Components/AttributeComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 UAttributeComponent::UAttributeComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-
 }
 
 void UAttributeComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UAttributeComponent::TakeDamage);
 }
 
 void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -22,12 +22,10 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 }
 
-void UAttributeComponent::TakeDamage(float Damage)
+void UAttributeComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	Health = FMath::Clamp(Health - Damage, 0.0f, MaxHealth);
-}
+	if(Damage <= 0.f) return;
 
-bool UAttributeComponent::IsDead() const
-{
-	return Health <= 0.0f;
+	Health -= Damage;
+	UE_LOG(LogTemp, Warning, TEXT("Health : %f"), Health);
 }

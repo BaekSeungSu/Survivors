@@ -41,6 +41,7 @@ void ASwordWeapon::Attack()
         SpawnParams.Instigator = GetInstigator();
     
         ASwordProjectile* Projectile = GetWorld()->SpawnActor<ASwordProjectile>(ProjectileClass, StartLocation, FRotator::ZeroRotator, SpawnParams);
+        Projectile->SetOwner(this);
         if (Projectile)
         {
             Projectile->InitializeProjectile(AttackDirection, AttackRange, AttackPower);

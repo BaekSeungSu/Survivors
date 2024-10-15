@@ -4,7 +4,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystem.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "GameFramework/DamageType.h"
 #include "Components/SphereComponent.h"
+#include "Enemy/Enemy.h"
 
 ASwordProjectile::ASwordProjectile()
 {
@@ -15,8 +17,6 @@ ASwordProjectile::ASwordProjectile()
 	CollisionComponent->SetCollisionProfileName(TEXT("Projectile"));
 	RootComponent = CollisionComponent;
 
-	CollisionComponent->OnComponentHit.AddDynamic(this, &ASwordProjectile::OnHit);
-
 	SwordProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Sword Projectile Movement Component"));
 	SwordProjectileMovementComponent->MaxSpeed = 1000.f;
 	SwordProjectileMovementComponent->InitialSpeed = 1000.f;
@@ -26,6 +26,7 @@ void ASwordProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	SpanwParticle();
+	CollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &ASwordProjectile::OnOverlapBegin);
 	StartLocation = GetActorLocation();
 }
 
@@ -64,7 +65,16 @@ void ASwordProjectile::InitializeProjectile(FVector Direction, float Range, floa
 	SwordProjectileMovementComponent->Velocity = MoveDirection * SwordProjectileMovementComponent->InitialSpeed;
 }
 
-void ASwordProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void ASwordProjectile::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	
+	AActor* MyOwner = GetOwner();
+	if(MyOwner == nullptr) return;
+
+	AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
+	UClass* DamageTypeClass = UDamageType::StaticClass();
+
+	if(OtherActor && OtherActor != this && OtherActor != MyOwner)
+	{
+		UGameplayStatics::ApplyDamage(OtherActor, ProjectileDamage, MyOwnerInstigator, this, DamageTypeClass);
+	}
 }
