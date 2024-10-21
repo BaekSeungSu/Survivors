@@ -5,6 +5,7 @@
 #include "Components/AttributeComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 AEnemy::AEnemy()
 {
@@ -17,10 +18,19 @@ AEnemy::AEnemy()
 
 }
 
+void AEnemy::HandleDestruction()
+{
+	
+}
+
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if(Attributes)
+	{
+		Attributes->OnHealthChanged.AddDynamic(this, &AEnemy::PlayHitEffect);
+	}
 }
 
 void AEnemy::Tick(float DeltaTime)
@@ -33,5 +43,10 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AEnemy::PlayHitEffect()
+{
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, GetActorLocation());
 }
 

@@ -27,5 +27,6 @@ void UAttributeComponent::TakeDamage(AActor* DamagedActor, float Damage, const U
 	if(Damage <= 0.f) return;
 
 	Health -= Damage;
-	UE_LOG(LogTemp, Warning, TEXT("Health : %f"), Health);
+
+	OnHealthChanged.Broadcast();
 }

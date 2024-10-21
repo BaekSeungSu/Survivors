@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "AttributeComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHealthChangedSignature);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SURVIVORS_API UAttributeComponent : public UActorComponent
@@ -19,6 +20,8 @@ public:
 	UFUNCTION()
 	void TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 	
+	FOnHealthChangedSignature OnHealthChanged;
+
 
 protected:
 	virtual void BeginPlay() override;
@@ -31,8 +34,9 @@ private:
 	// 최대 체력
 	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
 	float MaxHealth;
-	
 		
 };
+
+
 
 

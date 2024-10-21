@@ -15,6 +15,11 @@ class SURVIVORS_API AEnemy : public ACharacter
 public:
 	AEnemy();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
+	class UParticleSystem* HitEffect;
+
+	void HandleDestruction();
+
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -24,6 +29,12 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	class UAttributeComponent* Attributes;
-
+	
+	UFUNCTION()
+	void PlayHitEffect();
 };
+
+
+
+
 
