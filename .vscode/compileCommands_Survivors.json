@@ -16,6 +16,14 @@
 		"directory": "D:\\UE_5.3\\Engine\\Source"
 	},
 	{
+		"file": "D:\\UnrealEngine5\\Survivors\\Source\\Survivors\\Private\\GameMode\\SurvivorsGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UnrealEngine5\\Survivors\\.vscode\\compileCommands_Survivors\\Survivors.1.rsp"
+		],
+		"directory": "D:\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "D:\\UnrealEngine5\\Survivors\\Source\\Survivors\\Private\\Items\\Item.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
@@ -57,6 +65,14 @@
 	},
 	{
 		"file": "D:\\UnrealEngine5\\Survivors\\Source\\Survivors\\Public\\Enemy\\Enemy.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UnrealEngine5\\Survivors\\.vscode\\compileCommands_Survivors\\Survivors.1.rsp"
+		],
+		"directory": "D:\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\UnrealEngine5\\Survivors\\Source\\Survivors\\Public\\GameMode\\SurvivorsGameMode.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
 			"@D:\\UnrealEngine5\\Survivors\\.vscode\\compileCommands_Survivors\\Survivors.1.rsp"
