@@ -14,4 +14,17 @@ class SURVIVORS_API ASurvivorsGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	void ActorDied(ACharacter* DeadCharacter);
+
+protected:
+	virtual void BeginPlay() override;
+
+private:
+	class ASurvivorsCharacter* SurvivorsCharacter;
+	class AEnemy* Enemy;
 };
+
+
+
+

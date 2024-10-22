@@ -20,7 +20,7 @@ AEnemy::AEnemy()
 
 void AEnemy::HandleDestruction()
 {
-	
+	Destroy();
 }
 
 void AEnemy::BeginPlay()

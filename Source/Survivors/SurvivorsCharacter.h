@@ -22,6 +22,10 @@ public:
 
 	void Attack();
 
+	void HandleDestruction();
+
+	APlayerController* GetPlayerController() const {return PlayerController;}
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -34,10 +38,15 @@ private:
 	void Turn(float deltatime);
 	void EquipWeapons();
 
+	UPROPERTY(VisibleAnywhere)
+	class UAttributeComponent* Attributes;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
     TSubclassOf<AWeaponBase> WeaponBaseClass;
 
     UPROPERTY()
     AWeaponBase* EquippedWeapon;
+
+	APlayerController* PlayerController;
 
 };

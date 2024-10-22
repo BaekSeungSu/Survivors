@@ -2,6 +2,7 @@
 
 
 #include "SurvivorsCharacter.h"
+#include "Public/Components/AttributeComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -10,6 +11,8 @@ ASurvivorsCharacter::ASurvivorsCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+    Attributes->CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
+
     GetCharacterMovement()->bOrientRotationToMovement = true;
     bUseControllerRotationYaw = false;
 }
@@ -17,7 +20,7 @@ ASurvivorsCharacter::ASurvivorsCharacter()
 void ASurvivorsCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
+    PlayerController = Cast<APlayerController>(GetController());
     EquipWeapons();
 	
 }
@@ -44,6 +47,12 @@ void ASurvivorsCharacter::Attack()
     {
         EquippedWeapon->Attack();
     }
+}
+
+void ASurvivorsCharacter::HandleDestruction()
+{
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false);
 }
 
 void ASurvivorsCharacter::MoveForward(float AxisValue)
