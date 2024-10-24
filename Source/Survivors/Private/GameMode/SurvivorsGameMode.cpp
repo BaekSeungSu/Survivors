@@ -2,7 +2,7 @@
 
 
 #include "GameMode/SurvivorsGameMode.h"
-#include "Kismet/GameplayStatics.h".
+#include "Kismet/GameplayStatics.h"
 #include "../SurvivorsCharacter.h"
 #include "Enemy/Enemy.h"
 
@@ -28,6 +28,6 @@ void ASurvivorsGameMode::ActorDied(ACharacter* DeadCharacter)
     }
     else if(AEnemy* DiedEnemy = Cast<AEnemy>(DeadCharacter))
     {
-
+        DiedEnemy->HandleDestruction();
     }
 }

@@ -11,7 +11,7 @@ ASurvivorsCharacter::ASurvivorsCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-    Attributes->CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
+    Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
 
     GetCharacterMovement()->bOrientRotationToMovement = true;
     bUseControllerRotationYaw = false;
