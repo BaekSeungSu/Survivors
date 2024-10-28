@@ -15,6 +15,9 @@ class SURVIVORS_API AEnemy : public ACharacter
 public:
 	AEnemy();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+	float Damage;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
 	class UParticleSystem* HitEffect;
 
@@ -27,12 +30,18 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+
 	UPROPERTY(VisibleAnywhere)
 	class UAttributeComponent* Attributes;
 	
 	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
+	UFUNCTION()
 	void PlayHitEffect();
 };
+
+
 
 
 

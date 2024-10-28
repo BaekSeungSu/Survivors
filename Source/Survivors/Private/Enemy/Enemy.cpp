@@ -6,6 +6,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "../SurvivorsCharacter.h"
 
 AEnemy::AEnemy()
 {
@@ -15,6 +16,7 @@ AEnemy::AEnemy()
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
 
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
+	Damage = 10.f;
 
 }
 
@@ -26,6 +28,8 @@ void AEnemy::HandleDestruction()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AEnemy::OnOverlapBegin);
 	
 	if(Attributes)
 	{
@@ -50,3 +54,14 @@ void AEnemy::PlayHitEffect()
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, GetActorLocation());
 }
 
+void AEnemy::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if(OtherActor && OtherActor != this && OtherActor->IsA(ASurvivorsCharacter::StaticClass()))
+	{
+		ASurvivorsCharacter* PlayerCharacter = Cast<ASurvivorsCharacter>(OtherActor);
+		if(PlayerCharacter)
+		{
+			UGameplayStatics::ApplyDamage(PlayerCharacter, Damage, GetController(), this, UDamageType::StaticClass());
+		}
+	}
+}
