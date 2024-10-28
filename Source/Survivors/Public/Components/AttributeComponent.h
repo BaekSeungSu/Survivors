@@ -34,7 +34,8 @@ private:
 	// 최대 체력
 	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
 	float MaxHealth;
-		
+	
+	class ASurvivorsGameMode* SurvivorsGameMode; 
 };
 
 

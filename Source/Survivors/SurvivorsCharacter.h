@@ -26,6 +26,9 @@ public:
 
 	APlayerController* GetPlayerController() const {return PlayerController;}
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
+	class UParticleSystem* HitEffect;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -49,4 +52,6 @@ private:
 
 	APlayerController* PlayerController;
 
+	UFUNCTION()
+	void PlayHitEffect();
 };

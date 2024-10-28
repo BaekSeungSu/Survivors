@@ -61,6 +61,7 @@ void ASwordProjectile::InitializeProjectile(FVector Direction, float Range, floa
 	MoveDirection = Direction.GetSafeNormal();
 	MaxRange = Range;
 	ProjectileDamage = Damage;
+	
 
 	SwordProjectileMovementComponent->Velocity = MoveDirection * SwordProjectileMovementComponent->InitialSpeed;
 }

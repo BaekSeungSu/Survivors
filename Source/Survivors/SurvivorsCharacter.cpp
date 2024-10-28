@@ -22,6 +22,11 @@ void ASurvivorsCharacter::BeginPlay()
 	Super::BeginPlay();
     PlayerController = Cast<APlayerController>(GetController());
     EquipWeapons();
+
+    if(Attributes)
+	{
+		Attributes->OnHealthChanged.AddDynamic(this, &ASurvivorsCharacter::PlayHitEffect);
+	}
 	
 }
 
@@ -99,4 +104,9 @@ void ASurvivorsCharacter::EquipWeapons()
         }
 
     }
+}
+
+void ASurvivorsCharacter::PlayHitEffect()
+{
+    UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, GetActorLocation());
 }
