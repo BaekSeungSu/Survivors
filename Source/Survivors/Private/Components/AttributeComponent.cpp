@@ -26,6 +26,12 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 }
 
+bool UAttributeComponent::IsAlive()
+{
+	return Health >0.f;
+}
+
+
 void UAttributeComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
 	if(Damage <= 0.f) return;

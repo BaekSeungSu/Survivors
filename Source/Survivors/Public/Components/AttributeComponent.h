@@ -22,6 +22,7 @@ public:
 	
 	FOnHealthChangedSignature OnHealthChanged;
 
+	bool IsAlive();
 
 protected:
 	virtual void BeginPlay() override;
@@ -37,7 +38,4 @@ private:
 	
 	class ASurvivorsGameMode* SurvivorsGameMode; 
 };
-
-
-
 
